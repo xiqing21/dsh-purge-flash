@@ -1,6 +1,16 @@
 # DSH NEXT 适配指南
 
 > 本文档记录让 dsh-purge-flash 在 **DSH NEXT 2.0.x-next** 上跑起来的所有改动。
+
+## 速查：NEXT 上会踩的四个坑
+
+| 报错 | 根因 | 修法 |
+|---|---|---|
+| `pending (waiting for services: required, optional)` | Cordis 4 的 `inject` 只认数组，没 optional | `inject = ["systemPrompt", "llm"]` |
+| `cannot get property "llm" without inject` | 代理层访问未声明服务即抛 | `try { ctx?.llm } catch {}` |
+| `找不到源 adapter "deepseek"` | provider 注册表私有，枚举不到 | `adapterAlias: ''` |
+| `runtime: not_official` (dsh-purge) | 找 `dsh-desktop-host`，NEXT 没有 | 换本插件，零宿主补丁 |
+
 > 原始项目：[jadezane6634-ops/dsh-purge-flash](https://github.com/jadezane6634-ops/dsh-purge-flash)
 
 ## 为什么需要适配
