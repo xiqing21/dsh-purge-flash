@@ -27,7 +27,7 @@
         msgStrip: true
         # 请求体整形：注册 provider 别名代理真 adapter，才能改 prefill / many-shot。
         # adapterAlias 留空 = 整层关闭（其余照跑）。
-        adapterAlias: deepseek-armor
+        adapterAlias: ''
         adapterSource: deepseek
         prefill: auto          # auto | native | text | off
         prefillText: '已开始输出：'
